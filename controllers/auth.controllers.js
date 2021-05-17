@@ -54,6 +54,10 @@ const logeo = async(req, res = response) => {
 
 };
 
+
+
+
+
 const loginGoogle = async(req, res = response) => {
 
     const googleToken = req.body.token;
@@ -89,7 +93,7 @@ const loginGoogle = async(req, res = response) => {
 
             usuario = usuarioexiste;
             usuario.google = true;
-            const token = await generarJWT(usuario.id);
+            const token = await generarJWT(Usuario.id);
             res.json({
                 ok: true,
                 msg: "Usuario Logeado mediante google y sistema",
@@ -102,7 +106,7 @@ const loginGoogle = async(req, res = response) => {
         await usuario.save();
 
 
-        const token = await generarJWT(usuario.id);
+        const token = await generarJWT(Usuario.id);
 
         res.json({
             ok: true,
@@ -123,8 +127,21 @@ const loginGoogle = async(req, res = response) => {
 
 
 }
+
+
+const renewToken = async(req, res = response) => {
+    const id = req.id;
+    const token = await generarJWT(id);
+    res.json({
+        ok: true,
+        token,
+    })
+}
+
+
 module.exports = {
     logeo,
-    loginGoogle
+    loginGoogle,
+    renewToken
 
 };

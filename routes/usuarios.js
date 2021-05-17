@@ -31,9 +31,7 @@ router.post("/", [
 );
 
 router.put('/:id', [validarJWT,
-        check("nombreUsuario", "El nombre de Usuario es Obligatori")
-        .not()
-        .isEmpty(),
+        check("nombreUsuario", "El nombre de Usuario es Obligatori").not().isEmpty(),
         check("email", " El Correo es Obligatorio").not().isEmpty(),
         check("email", "Correo no Valido").isEmail(),
         //   check("role", "El rol es obligatorio").not().isEmpty(),

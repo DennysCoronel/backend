@@ -19,9 +19,14 @@ app.use(express.json());
 //base de datos
 dbConnection();
 
-//Rutas
+//Ru    tas
 app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/datos', require('./routes/datos'));
+app.use('/api/coperativas', require('./routes/coperativas'));
 app.use('/api/login', require('./routes/auth'));
+app.use('/api/todo', require('./routes/busquedas'));
+app.use('/api/upload', require('./routes/upload'));
+
 
 
 // onuStIMeXtRo

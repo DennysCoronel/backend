@@ -12,6 +12,7 @@ const logeo = async(req, res = response) => {
 
         const usuarioExite = await usuarios.findOne({ nombreUsuario });
 
+
         if (!usuarioExite) {
             return res.status(500).json({
                 ok: false,
@@ -27,7 +28,6 @@ const logeo = async(req, res = response) => {
                 ok: false,
                 msg: "Error Contrasenia no encontrado",
             });
-
         }
 
         const token = await generarJWT(usuarioExite.id);

@@ -19,7 +19,10 @@ app.use(express.json());
 //base de datos
 dbConnection();
 
-//Ru    tas
+//directorio 
+app.use(express.static('public'));
+
+//Rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/datos', require('./routes/datos'));
 app.use('/api/coperativas', require('./routes/coperativas'));
